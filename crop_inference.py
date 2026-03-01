@@ -122,3 +122,4 @@ if __name__ == "__main__":
             print(res.to_string(index=False))
     except Exception as e:
         print(f"Error during inference: {e}")
+
