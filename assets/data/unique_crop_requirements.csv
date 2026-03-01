@@ -1,0 +1,40 @@
+Crop,crop_Temp_Min,crop_Temp_Max,crop_Rainfall_Min,crop_Rainfall_Max,crop_pH_Min,crop_pH_Max,crop_N_kg_ha,crop_P_kg_ha,crop_K_kg_ha,crop_Avg_Yield_t_ha,Units,crop_Season,crop_Soil_Texture,crop_Irrigation_Type
+Arhar/Tur,20.0,35.0,600.0,1000.0,6.0,7.5,25.0,50.0,25.0,2.0,Tons/Ha,Kharif,Loam,Rainfed
+Bajra,25.0,35.0,400.0,600.0,6.0,7.5,60.0,30.0,20.0,2.0,Tons/Ha,Kharif,Sandy loam,Rainfed
+Banana,20.0,35.0,1000.0,2500.0,6.0,7.5,200.0,60.0,200.0,60.0,Tons/Ha,Annual,Loam,Drip
+Black Pepper,20.0,30.0,2000.0,3000.0,5.5,6.5,100.0,40.0,140.0,1.5,Tons/Ha,Kharif,Loam,Drip
+Cashewnut,20.0,35.0,1000.0,2000.0,4.5,6.5,80.0,40.0,40.0,2.0,Tons/Ha,Kharif,Laterite,Rainfed
+Coconut,20.0,35.0,1500.0,2500.0,5.5,8.0,100.0,40.0,140.0,12000.0,Nuts/Ha,Annual,Sandy loam,Drip/Basin
+Coriander,15.0,25.0,400.0,600.0,6.0,8.0,60.0,30.0,30.0,2.0,Tons/Ha,Rabi,Loam,Rainfed
+Dry Chillies,20.0,30.0,600.0,1000.0,6.0,7.5,100.0,50.0,50.0,3.0,Tons/Ha,Kharif,Loam,Drip
+Garlic,15.0,25.0,500.0,700.0,6.0,7.5,100.0,50.0,50.0,12.0,Tons/Ha,Rabi,Loam,Drip
+Ginger,20.0,30.0,1000.0,2000.0,5.5,6.5,100.0,50.0,50.0,15.0,Tons/Ha,Kharif,Loam,Drip
+Gram,15.0,25.0,400.0,600.0,6.0,8.0,20.0,50.0,25.0,2.5,Tons/Ha,Rabi,Sandy loam,Rainfed
+Groundnut,20.0,30.0,500.0,1000.0,6.0,7.5,25.0,50.0,45.0,3.5,Tons/Ha,Kharif,Sandy loam,Drip/Furrow
+Guar Seed,25.0,35.0,300.0,500.0,7.0,8.5,20.0,40.0,20.0,2.0,Tons/Ha,Kharif,Sandy,Rainfed
+Jowar,25.0,35.0,400.0,800.0,6.0,8.0,80.0,40.0,40.0,3.0,Tons/Ha,Kharif/Rabi,Loam,Rainfed
+Maize,18.0,27.0,500.0,800.0,5.5,7.5,150.0,70.0,50.0,8.0,Tons/Ha,Kharif/Rabi,Loam,Drip/Furrow
+Onion,15.0,30.0,500.0,700.0,6.0,7.5,120.0,60.0,60.0,25.0,Tons/Ha,Rabi/Kharif,Loam,Drip
+Potato,15.0,25.0,500.0,700.0,5.0,6.5,150.0,80.0,100.0,35.0,Tons/Ha,Rabi,Loam,Furrow
+Ragi,20.0,30.0,500.0,1000.0,5.5,7.5,60.0,40.0,30.0,3.0,Tons/Ha,Kharif,Loam,Rainfed
+Rice,20.0,35.0,1000.0,2000.0,5.5,7.0,120.0,50.0,50.0,5.0,Tons/Ha,Kharif,Clay loam,Flood
+Sesamum,25.0,35.0,500.0,800.0,5.5,8.0,40.0,40.0,20.0,1.5,Tons/Ha,Kharif,Well-drained loam,Rainfed/Drip
+Small Millets,20.0,30.0,400.0,800.0,5.5,7.5,40.0,30.0,20.0,2.0,Tons/Ha,Kharif,Sandy loam,Rainfed
+Soyabean,20.0,30.0,600.0,1000.0,6.0,7.5,30.0,60.0,40.0,3.0,Tons/Ha,Kharif,Loam,Rainfed
+Sugarcane,20.0,35.0,1000.0,1500.0,6.5,7.5,275.0,80.0,140.0,100.0,Tons/Ha,Annual,Deep loam,Furrow/Drip
+Sunflower,20.0,30.0,500.0,800.0,6.0,7.5,60.0,60.0,40.0,2.5,Tons/Ha,Kharif/Rabi,Loam,Rainfed
+Urad,25.0,35.0,600.0,900.0,6.0,7.5,20.0,45.0,25.0,2.0,Tons/Ha,Kharif,Sandy loam,Light irrigation
+Wheat,10.0,25.0,500.0,1000.0,6.0,7.5,120.0,55.0,45.0,5.0,Tons/Ha,Rabi,Loam,Canal/Furrow
+Turmeric,20.0,30.0,1000.0,2000.0,5.5,7.5,120.0,60.0,100.0,10.0,Tons/Ha,Kharif,Loam,Drip/Furrow
+Barley,12.0,25.0,300.0,600.0,6.0,8.0,60.0,40.0,40.0,5.0,Tons/Ha,Rabi,Loam,Rainfed
+Cardamom,15.0,30.0,1500.0,4000.0,5.5,6.5,75.0,75.0,150.0,1.0,Tons/Ha,Kharif,Loam,Drip
+Rapeseed &Mustard,10.0,25.0,625.0,1000.0,6.0,7.0,80.0,40.0,40.0,2.5,Tons/Ha,Rabi,Sandy loam,Rainfed
+Moong(Green Gram),25.0,35.0,600.0,900.0,6.0,7.5,20.0,40.0,20.0,1.5,Tons/Ha,Kharif,Loamy,Rainfed
+Masoor,18.0,30.0,300.0,450.0,6.0,7.5,20.0,40.0,0.0,1.5,Tons/Ha,Rabi,Loamy,Rainfed
+Castor Seed,20.0,30.0,500.0,750.0,6.0,7.5,80.0,40.0,40.0,2.5,Tons/Ha,Whole Year,Sandy loam,Rainfed
+Tobacco,20.0,27.0,500.0,1200.0,5.5,6.5,100.0,50.0,100.0,3.0,Tons/Ha,Whole Year,Sandy loam,Rainfed
+Arecanut,14.0,36.0,750.0,4500.0,5.0,8.0,100.0,40.0,140.0,3.0,Tons/Ha,Whole Year,Clay loam,Irrigation
+Sweet Potato,21.0,26.0,750.0,1500.0,5.5,6.5,40.0,40.0,60.0,15.0,Tons/Ha,Whole Year,Sandy loam,Rainfed
+Tapioca,25.0,30.0,1000.0,2000.0,4.5,6.5,60.0,60.0,120.0,25.0,Tons/Ha,Whole Year,Sandy loam,Rainfed
+Horse-Gram,25.0,32.0,200.0,800.0,6.0,7.5,20.0,30.0,12.0,1.5,Tons/Ha,Kharif,Sandy,Rainfed
+Safflower,24.0,32.0,600.0,1000.0,7.4,8.5,60.0,60.0,30.0,2.5,Tons/Ha,Rabi,Clay,Rainfed
