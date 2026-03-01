@@ -18,7 +18,7 @@ import pickle
 
 from crop_inference import predict_crop_recommendations
 from predict_fertilizer import predict_fertilizer
-# Removed database dependency for simplified web login
+
 
 st.set_page_config(
     page_title="AgriRank AI — Crop Ranking & Soil Health",
@@ -27,19 +27,10 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Helper for path resolution in bundled apps
+# Path configuration - Static for web deployment
 def get_asset_path(sub_path):
-    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    assets_path = os.path.join(base_path, 'assets', sub_path)
-    if os.path.exists(assets_path):
-        return assets_path
-    
-    local_path = os.path.join(base_path, sub_path)
-    if os.path.exists(local_path):
-        return local_path
-        
-    parent_path = os.path.join(os.path.dirname(base_path), sub_path)
-    return parent_path
+    """Standard relative path resolver"""
+    return os.path.join(os.path.dirname(__file__), 'assets', sub_path)
 
 HISTORICAL_DATA_PATH = get_asset_path("data/district_crop_master.csv")
 COORDS_DATA_PATH = get_asset_path("data/district_coords.csv")
@@ -76,23 +67,17 @@ def load_all_data():
             if col in hist_df.columns:
                 hist_df[col] = hist_df[col].apply(normalize_state) if col == 'State' else hist_df[col].str.title().str.strip()
     
-    # Load coords
+    # Load pre-processed coords (already optimized to 34KB)
     if not os.path.exists(COORDS_DATA_PATH):
         st.warning(f"Coords file not found: {COORDS_DATA_PATH}")
-        coords_df = pd.DataFrame()
+        coords_df = pd.DataFrame(columns=['State', 'District', 'Latitude', 'Longitude'])
     else:
         try:
-            coords_df = pd.read_csv(COORDS_DATA_PATH, encoding='latin-1')
-            coords_df.columns = [c.lstrip('ÿ').strip() for c in coords_df.columns]
-            
+            coords_df = pd.read_csv(COORDS_DATA_PATH)
+            # Ensure proper string formatting just in case
             if not coords_df.empty:
                 coords_df['State'] = coords_df['State'].apply(normalize_state)
                 coords_df['District'] = coords_df['District'].str.title().str.strip()
-                
-                coords_df = coords_df.groupby(['State', 'District']).agg({
-                    'Latitude': 'mean',
-                    'Longitude': 'mean'
-                }).reset_index()
         except Exception as e:
             st.error(f"Error loading map coordinates: {e}")
             coords_df = pd.DataFrame(columns=['State', 'District', 'Latitude', 'Longitude'])
