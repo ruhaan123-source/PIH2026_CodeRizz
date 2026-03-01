@@ -11,7 +11,7 @@ def get_asset_path(sub_path):
         return assets_path
     return os.path.join(base_path, sub_path)
 
-MODEL_PATH = get_asset_path("models/crop_yield_model.json")
+MODEL_PATH = get_asset_path("models/crop_yield_model.ubj")
 METADATA_PATH = get_asset_path("models/encoding_maps.pkl")
 CROP_DATA_PATH = get_asset_path("data/unique_crop_requirements.csv")
 HISTORICAL_DATA_PATH = get_asset_path("data/district_crop_master.csv")
