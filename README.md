@@ -4,6 +4,7 @@
 
 AgriRank AI is a high-performance decision support platform designed to empower Indian farmers with data-driven insights. It leverages advanced Machine Learning (XGBoost) and interactive geospatial visualizations (Pydeck) to provide region-specific crop and soil intelligence.
 
+#Deployment link: https://agriaankai.streamlit.app/
 ---
 
 ## [Goal] Core Problem
