@@ -1,4 +1,9 @@
-streamlit>=1.30.0
-pydeck>=0.8.0
-pandas>=2.0.0
-numpy>=1.24.0
+streamlit
+pandas
+numpy
+pydeck
+xgboost
+scikit-learn
+scipy
+requests
+chardet
