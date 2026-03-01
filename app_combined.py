@@ -1,18 +1,6 @@
-# =============================================================================
-# AI-Driven Crop Ranking & Soil Health Recommendation System
-# Pan-India Hackathon — 4-Page Application
-# =============================================================================
-#
-# PAGE STRUCTURE:
-#   Page 1 — Login / Greeting (Globe animation + auth gate)
-#   Page 2 — Region-wise Top 10 Crops (Map selection + market values)
-#   Page 3 — Recommendations (Fertilizers, pesticides, pH guidance)
-#   Page 4 — India Map Info (3D pydeck map + About Us)
-#
-# SESSION STATE ≈ React useState() — global across the app.
-# =============================================================================
-
+import os, sys
 import warnings
+
 try:
     from sklearn.exceptions import InconsistentVersionWarning
     warnings.filterwarnings("ignore", category=InconsistentVersionWarning)
@@ -26,11 +14,11 @@ import pandas as pd
 import numpy as np
 import time
 import random
-import os
 import pickle
 
 from crop_inference import predict_crop_recommendations
 from predict_fertilizer import predict_fertilizer
+# Removed database dependency for simplified web login
 
 st.set_page_config(
     page_title="AgriRank AI — Crop Ranking & Soil Health",
@@ -41,21 +29,15 @@ st.set_page_config(
 
 # Helper for path resolution in bundled apps
 def get_asset_path(sub_path):
-    """Get absolute path to resource, works for dev and for PyInstaller"""
-    # Check if we are running in a bundle
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-    
-    # Try the assets folder first (bundle/organized structure)
     assets_path = os.path.join(base_path, 'assets', sub_path)
     if os.path.exists(assets_path):
         return assets_path
     
-    # Fallback to current directory (dev structure)
     local_path = os.path.join(base_path, sub_path)
     if os.path.exists(local_path):
         return local_path
         
-    # Final fallback to parent directory if in child folder
     parent_path = os.path.join(os.path.dirname(base_path), sub_path)
     return parent_path
 
@@ -263,17 +245,24 @@ if st.session_state.current_page == 1:
     if not st.session_state.authenticated:
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.markdown("<div class='login-card'>", unsafe_allow_html=True)
-            st.markdown("<h2 style='text-align: center; color: #63ffb6;'>Welcome to AgriRank AI</h2>", unsafe_allow_html=True)
+            # Simplified Login UI
+            st.markdown(f"<h2 style='text-align: center; color: #63ffb6;'>Login</h2>", unsafe_allow_html=True)
             st.markdown("<p style='text-align: center; font-size: 0.9rem; color: #94a3b8;'>AI-Driven Precision Agriculture</p>", unsafe_allow_html=True)
             
-            username = st.text_input("Username", "admin")
-            password = st.text_input("Password", type="password")
+            user_input = st.text_input("Username")
+            pass_input = st.text_input("Password", type="password", help="Enter any password for 'admin'")
             
             if st.button("Access Dashboard", use_container_width=True):
-                st.session_state.authenticated = True
-                st.session_state.current_page = 2
-                st.rerun()
+                    # Simplified login: admin with any/no password
+                    if user_input.lower() == "admin":
+                        st.session_state.authenticated = True
+                        st.session_state.current_page = 2
+                        st.rerun()
+                    else:
+                        st.error("Invalid username. Use 'admin' to access.")
+            else:
+                st.info("Sign Up is currently disabled. Use 'admin' to login.")
+            
             st.markdown("</div>", unsafe_allow_html=True)
     else:
         st.markdown(f"<h1 class='hero-title'>Hello, Explorer!</h1>", unsafe_allow_html=True)
@@ -412,16 +401,16 @@ elif st.session_state.current_page == 4:
     if not HISTORICAL_DF.empty:
         state_yields = HISTORICAL_DF[HISTORICAL_DF['State'] == st.session_state.selected_state]
         if not state_yields.empty:
-            avg_yields = state_yields.groupby('District')['Yield'].mean().reset_index()
+            avg_yields = state_yields.groupby('District')['Avg_Yield'].mean().reset_index()
             state_district_coords = state_district_coords.merge(avg_yields, on='District', how='left')
         else:
-            state_district_coords['Yield'] = 0
+            state_district_coords['Avg_Yield'] = 0
     else:
-        state_district_coords['Yield'] = 0
+        state_district_coords['Avg_Yield'] = 0
 
     if state_district_coords.empty:
         st.warning(f"No geographical data available for {st.session_state.selected_state} in our coordinate database.")
-    elif state_district_coords['Yield'].sum() == 0 and st.session_state.selected_state == "Andaman And Nicobar":
+    elif state_district_coords['Avg_Yield'].sum() == 0 and st.session_state.selected_state == "Andaman And Nicobar":
         st.info("📍 **Note**: Coordinate data is available for Andaman and Nicobar, but agricultural yield records are currently not available for this region.")
     
     # Map Visualization Mode Toggle
@@ -527,4 +516,3 @@ elif st.session_state.current_page == 4:
     st.markdown("---", unsafe_allow_html=True)
     st.markdown("### About AgriRank AI")
     st.write("AgriRank AI is an advanced precision agriculture platform designed to empower Indian farmers with data-driven decision making. By leveraging localized coordinates from `district_coords.csv` and historical data, we provide deep spatial insights that help maximize efficiency and sustainability.")
-
